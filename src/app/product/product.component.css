@@ -1,0 +1,12 @@
+.img_div {
+    width: auto;
+}
+
+.img_div img {
+    width: 100%;
+}
+
+.pull-right {
+    text-align: left;
+    color: blue;
+}
