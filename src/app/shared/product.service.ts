@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+)
 // @Injectable()
 export class ProductService {
   private products: Product[] = [
@@ -28,10 +27,9 @@ export class ProductService {
   getProduct(id: number): Product {
     return this.products.find((product) => product.id === id);
   }
-  getCommentsFprProductId(id: number): Comment[] {
-    return this.comments.filter((comment: Comment) => comment.productId);
-  }  
-
+  getCommentsForProductId(id: number): Comment[] {
+    return this.comments.filter((comment: Comment) => comment.productId === id);
+  }
 }
 
 export class Product {

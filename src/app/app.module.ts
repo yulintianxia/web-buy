@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { HttpModule } from '@angular/http'
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,11 +13,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductService } from 'app/shared/product.service';
+import { TestComponent } from './test/test.component';
+import { MultiplePipe } from './pipe/multiple.pipe';
 
 
 const routeConfig: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product/:productId', component: ProductDetailComponent }
+  { path: 'productdetail/:productId', component: ProductDetailComponent }
 ]
 @NgModule({
   declarations: [
@@ -29,13 +31,17 @@ const routeConfig: Routes = [
     ProductComponent,
     StarsComponent,
     HomeComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    TestComponent,
+    MultiplePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig,
+      { enableTracing: true })
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
