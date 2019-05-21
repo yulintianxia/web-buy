@@ -15,6 +15,11 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductService } from 'app/shared/product.service';
 import { TestComponent } from './test/test.component';
 import { MultiplePipe } from './pipe/multiple.pipe';
+import { FilterPipe } from './pipe/filter.pipe';
+import { PriceTestComponent } from './price-test/price-test.component';
+import { LifetestComponent } from './lifetest/lifetest.component';
+import { ChildComponent } from './child/child.component';
+
 
 
 const routeConfig: Routes = [
@@ -33,7 +38,11 @@ const routeConfig: Routes = [
     HomeComponent,
     ProductDetailComponent,
     TestComponent,
-    MultiplePipe
+    MultiplePipe,
+    FilterPipe,
+    PriceTestComponent,
+    LifetestComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,

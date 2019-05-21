@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -13,5 +13,27 @@
             </div>
         </div>
     </div>
-    <app-footer></app-footer>
-    <app-test></app-test>
+    <app-footer></app-footer> -->
+<!-- <app-test></app-test> -->
+<!-- <app-price-test (lastPrice)="priceQuotehadnler($event)"></app-price-test>
+<div>
+    这是报价组件外部 股票代码是{{priceQuote.stockcode}}, 股票价格是{{priceQuote.lastPrice}}
+</div> -->
+<!-- <app-lifetest [name]='title'></app-lifetest> -->
+<!-- <app-child #child1></app-child>
+<app-child #child2></app-child>
+<button (click)="child2.greeting('222')">调用child2的greeting方法</button> -->
+
+<div class="wapper">
+    <h2>我是父组件</h2>
+    <div>这个div定义在父组件中</div>
+    <app-child>
+        <!--  差值表达式只能是父组件里面的值 -->
+        <div class="header">这是页头,这是父组件投影到子组件中{{title}}</div>
+        <div class="footer">这是页脚,这是父组件投影到子组件中</div>
+    </app-child>
+</div>
+<!-- 只能绑定当前组件的值innerHTML可以为html片段  divContent = '<div>div content</div>' -->
+<div [innerHTML]="divContent">
+
+</div>
