@@ -1,8 +1,4 @@
-<!-- <span>
-    <i class="far fa-star"></i>
-   
-</span> -->
 <p>
-    <i *ngFor="let star of stars" [ngClass]="star === true?'far':'fa'" class="fa-star"></i>
-    <span> {{rating}} 星</span>
+    <i (click)="clickStar(i)" *ngFor="let star of stars; let i = index" [ngClass]="star === true?'far':'fa'" class="fa-star"></i>
+    <span> {{rating | number:'1.0-2'}} 星</span>
 </p>

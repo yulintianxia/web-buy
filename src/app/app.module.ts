@@ -19,6 +19,15 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { PriceTestComponent } from './price-test/price-test.component';
 import { LifetestComponent } from './lifetest/lifetest.component';
 import { ChildComponent } from './child/child.component';
+import { TemplateformComponent } from './templateform/templateform.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ReactiveRegistComponent } from './reactive-regist/reactive-regist.component';
+import { MobilevalidatorDirective } from './directive/mobilevdirective/mobilevalidator.directive';
+import { AsyncmobilevalidatorDirective } from './directive/mobilevdirective/asyncmobilevalidator.directive';
+import { StoresComponent } from './stores/stores.component';
+import { WebsockComponent } from './websock/websock.component';
+import { WebsocketService } from './websocket.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -43,6 +52,13 @@ const routeConfig: Routes = [
     PriceTestComponent,
     LifetestComponent,
     ChildComponent,
+    TemplateformComponent,
+    ReactiveFormComponent,
+    ReactiveRegistComponent,
+    MobilevalidatorDirective,
+    AsyncmobilevalidatorDirective,
+    StoresComponent,
+    WebsockComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +68,11 @@ const routeConfig: Routes = [
     RouterModule.forRoot(routeConfig,
       { enableTracing: true })
   ],
-  providers: [ProductService],
+  providers: [ProductService, WebsocketService,
+  {
+    provide: LocationStrategy, useClass: HashLocationStrategy
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

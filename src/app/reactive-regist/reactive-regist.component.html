@@ -1,0 +1,44 @@
+<form [formGroup]='formModel' (submit)='submit()'>
+    <div>
+        用户名
+        <input formControlName='username' type='text' />
+    </div>
+    <!--  只有用户访问过这个字段且不合法显示（untouched为true没访问过,touched访问过 -->
+    <div [hidden]="formModel.get('username').valid || formModel.get('username').untouched">
+        <div [hidden]="!formModel.hasError('required','username')">用户名是必填项</div>
+        <div [hidden]="!formModel.hasError('minlength','username')">用户名长度大于6</div>
+    </div>
+    <div>手机号<input type='number' formControlName='mobile' />
+    </div>
+    <!-- pristined值一直没修改过,dirty值修改过 -->
+    <div [hidden]="formModel.get('mobile').valid || formModel.get('username').pristine">
+        <div [hidden]="!formModel.hasError('mobile','mobile')">手机不正确</div>
+    </div>
+    <!-- 异步校验 -->
+    <div [hidden]="!formModel.get('mobile').pending">
+        正在校验手机号合法性
+    </div>
+    <div formGroupName='passwordGroup'>
+        <div>
+            密码
+            <input type='password' formControlName='password' />
+        </div>
+        <div [hidden]="!formModel.hasError('minlength',['passwordGroup','password'])">密码最少为6位</div>
+        <div>
+            确认密码
+            <input type='password' formControlName='checkpwd' />
+        </div>
+        <!-- 在html定义错误信息 -->
+        <!-- <div [hidden]="!formModel.hasError('equal','passwordGroup')">2次输入密码不一样</div> -->
+        <!-- 在构造器定义错误信息 -->
+        <div [hidden]="!formModel.hasError('equal','passwordGroup')">
+            {{formModel.getError('equal','passwordGroup')?.describe}}</div>
+    </div>
+
+    <div>
+        <button type='submit'>提交</button>
+    </div>
+</form>
+<div>
+    {{formModel.status}}
+</div>

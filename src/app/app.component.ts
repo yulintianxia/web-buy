@@ -1,24 +1,26 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { PriceQuote } from './price-test/price-test.component';
-import { ChildComponent } from './child/child.component';
-// import * as  $ from 'jquery';
+import { Component,  OnInit, AfterContentInit, AfterContentChecked, AfterViewInit } from '@angular/core';
+import { environment } from 'environments/environment.prod';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit{
-  
-  divContent = '<div>div content</div>'
-  @ViewChild('child1')
-  child1: ChildComponent
-  title = 'app-test';
-  priceQuote: PriceQuote = new PriceQuote('', 0);
-  priceQuotehadnler(event: PriceQuote ) {
-   this.priceQuote = event;
+export class AppComponent  implements OnInit, AfterContentInit, AfterContentChecked, AfterViewInit {
+  ngAfterContentInit(): void {
+    // console.log('父组件投影内容初始化完毕');
   }
+  ngAfterContentChecked(): void {
+    // console.log('父组件投影内容变更完毕');
+  }
+  ngAfterViewInit(): void {
+    // console.log('父组件视图内容全部完毕');
+  }
+ 
   ngOnInit(): void {
-    // this.child1.greeting('Tom');
+    
   }
-}
+    constructor() {
+       console.log('环境是' + environment.weixinhao);
+    }
+  }

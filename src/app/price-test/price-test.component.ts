@@ -18,7 +18,6 @@ export class PriceTestComponent implements OnInit {
     let pricestockcode: PriceQuote = new PriceQuote(
       this.stockcode, 100 * Math.random()
     )
-    //强制更新视图
     this.zone.run(() => {
       this.price = pricestockcode.lastPrice;
      })

@@ -2,23 +2,21 @@
     <input class="form-control" type='text' [formControl]='titleFilter' placeholder="请输入商品名称" />
 </div>
 <div class="row">
-
-    <div *ngFor="let product of Products | filter: 'price': keyword" class="col-lg-4  col-sm4">
+    <div *ngFor="let product of Products | async " class="col-lg-4  col-sm4">
         <div class="thumbnail img_div">
             <img [src]="imgURL" />
         </div>
         <div class="caption">
-            <h4 class='pull-right'> {{product.price}} 元</h4>
+            <h4 class='pull-right'> {{product?.price}} 元</h4>
             <h4>
-                {{product.id}}
-                <a [routerLink]="['/productdetail', product.id]">{{product.title }}</a>
-                <!-- <span (click)="turning(product)">222{{product.title }}</span> -->
+                {{product?.id}}
+                <a [routerLink]="['/productdetail', product?.id]">{{product?.title }}</a>
             </h4>
-            <p>{{product.desc}}</p>
-            <span>{{product.type}}</span>
+            <p>{{product?.desc}}</p>
+            <span>{{product?.type}}</span>
         </div>
         <div>
-            <app-stars [rating]="product.rating"></app-stars>
+            <app-stars [rating]="product?.rating"></app-stars>
         </div>
     </div>
 </div>
