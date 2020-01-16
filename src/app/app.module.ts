@@ -28,12 +28,17 @@ import { StoresComponent } from './stores/stores.component';
 import { WebsockComponent } from './websock/websock.component';
 import { WebsocketService } from './websocket.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { TestingComComponent } from './testing-com/testing-com.component';
+
 
 
 
 const routeConfig: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'productdetail/:productId', component: ProductDetailComponent }
+  { path: '', component: HomeComponent, pathMatch: 'full'  },
+  { path: 'productdetail/:productId', component: ProductDetailComponent },
+  { path: 'test', component: TestingComComponent,
+ 
+}
 ]
 @NgModule({
   declarations: [
@@ -59,6 +64,7 @@ const routeConfig: Routes = [
     AsyncmobilevalidatorDirective,
     StoresComponent,
     WebsockComponent,
+    TestingComComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,7 @@ const routeConfig: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routeConfig,
-      { enableTracing: true })
+     )
   ],
   providers: [ProductService, WebsocketService,
   {

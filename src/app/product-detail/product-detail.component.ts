@@ -1,9 +1,16 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Product, ProductService, Comment } from '../shared/product.service';
-import { ActivatedRoute } from '@angular/router';
+
 // import { NgZone } from '@angular/core';
 import { WebsocketService } from 'app/websocket.service';
 import { Subscription } from 'rxjs';
+
+
+
+/* 获取页面传递的参数，使用paramMap */
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -20,6 +27,9 @@ export class ProductDetailComponent implements OnInit {
   isCommentHidden: boolean = false;
   isWatched: boolean = false;
   currentBid: number;
+  
+  testId: number;
+  route: ActivatedRoute;
 
   subscription: Subscription;
   constructor(private routerInfo: ActivatedRoute,
@@ -32,6 +42,14 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:prefer-const
     let productId: number = + this.routerInfo.snapshot.params['productId'];
+
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        console.log(params);
+        return  params.get('id');
+      }  
+    ));
+
 
     // this.product = this.productService.getProduct(productId);
     // this.comments = this.productService.getCommentsForProductId(productId);
